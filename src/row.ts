@@ -74,27 +74,42 @@ export default class Row {
     this.stopButton.initialize();
   }
 
-  async generateChild(/*data: Blob*/) {
+  async generateChild() {
     let row = document.createElement("div");
+    row.classList.add("row");
+    document.body.appendChild(row);
+    const l = this.generateLeftRow();
+    const r = this.generateRightRow();
+    
+    row.appendChild(l);
+    row.appendChild(r);
+  }
 
+  generateLeftRow() {
     let inner_left_row = document.createElement("div");
     let text_row = document.createElement("div");
     let text = document.createElement("p");
 
+
+    inner_left_row.classList.add("inner-left-row");
+    inner_left_row.classList.add("text-row");
+    text_row.classList.add("text-row");
+    text.classList.add("text");
+
+    inner_left_row.appendChild(text_row);
+    text_row.appendChild(text);
+
+    text.textContent = "Test";
+    text.style.fontWeight = "bold";
+    text.style.marginTop = "0.9rem"; 
+    return inner_left_row;
+  }
+
+  generateRightRow() {
     let inner_right_row = document.createElement("div");
     let commands_row = document.createElement("div");
     let play_row = document.createElement("div");
     let stop_row = document.createElement("div");
-
-    row.classList.add("row");
-    row.classList.add("inner-left-row");
-
-    inner_left_row.classList.add("inner-left-row");
-    inner_left_row.classList.add("text-row");
-
-    row.classList.add("inner-right-row");
-    inner_right_row.classList.add("inner-right-row");
-    inner_right_row.classList.add("commands-row");
 
     commands_row.classList.add("commands-row");
     commands_row.classList.add("play-row");
@@ -104,23 +119,13 @@ export default class Row {
     stop_row.classList.add("stop-row");
     this.stopButton.stopButtonElement.classList.add("stop");
 
-    document.body.appendChild(row);
-
-    row.appendChild(inner_left_row);
-    inner_left_row.appendChild(text_row);
-    text_row.appendChild(text);
-
-    row.appendChild(inner_right_row);
     inner_right_row.appendChild(commands_row);
     commands_row.appendChild(play_row);
     play_row.append(this.playButton.playButtonElement);
     commands_row.appendChild(stop_row);
     stop_row.append(this.stopButton.stopButtonElement);
 
-
-    text.textContent = "Test";
-    text.style.fontWeight = "bold";
-    text.style.marginTop = "0.9rem";
-
+    return inner_right_row;
   }
+
 }

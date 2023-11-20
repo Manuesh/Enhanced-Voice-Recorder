@@ -48,32 +48,24 @@ button{
   width: 70%;
   height: 50px;
   margin: auto;
-  justify-content: flex-end;
   padding-right: 10px;
   margin-bottom: 10px;
   align-items: center;
+  justify-content: space-between;
 }
 
-.inner-left-row{
-  
+.text{
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
 }
 
-.text-row{
-
-}
-
-.inner-right-row{
-
-}
 
 .commands-row{
-  flex-direction: row;
   display: flex;
   gap: 5px;
 }
 
-.play-row{
-}
 
 .play{
   transition: all 0.2s;
@@ -84,9 +76,6 @@ button{
   transform: scale(0.9);
 }
 
-.stop-row{
-  
-}
 
 .stop{
   transition: all 0.2s;
