@@ -1,7 +1,5 @@
-# Tauri + Vanilla TS
+# Enhanced-Voice-Recorder
+Have you noticed that a reduced set of smartphones has a good voice recorder?
+Well, my objective is to create a multi-platform voice-recorder with Tauri and Vite as the frontend.
 
-This template should help get you started developing with Tauri in vanilla HTML, CSS and Typescript.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+Because the project is in fact very huge, it'll take me a lot of time to get it done.
