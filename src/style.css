@@ -31,6 +31,14 @@ button{
   outline: inherit;
 }
 
+.recButton{
+  transition: all 0.3s;
+}
+
+.recButton:hover{
+  transform: scale(0.9);
+}
+
 .timer{
   display: flex;
   flex-direction: column;
@@ -66,13 +74,11 @@ button{
   gap: 5px;
 }
 
-
 .play{
   transition: all 0.2s;
 }
 
 .play:hover{
-  color: black;
   transform: scale(0.9);
 }
 
@@ -84,5 +90,3 @@ button{
 .stop:hover{
   transform: scale(0.9);
 }
-
-

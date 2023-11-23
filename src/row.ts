@@ -59,13 +59,11 @@ export default class Row {
   playButton: playButton;
   pauseButton: pauseButton;
   stopButton: stopButton;
-  data: Blob;
 
-  constructor(data: Blob) {
+  constructor() {
     this.playButton = new playButton();
     this.pauseButton = new pauseButton();
     this.stopButton = new stopButton();
-    this.data = data;
   }
 
   initialize() {

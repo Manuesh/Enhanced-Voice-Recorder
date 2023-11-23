@@ -1,13 +1,16 @@
+import { writeBinaryFile, BaseDirectory } from "@tauri-apps/api/fs";
+
 export default class Recorder {
 
     recorder: MediaRecorder
 
     constructor(mediaRecorder: MediaRecorder) {
-        this.recorder = mediaRecorder
+        this.recorder = mediaRecorder;
     }
 
     start() {
         this.recorder.start();
+        this.dataHandler();
     }
 
     pause() {
@@ -18,29 +21,24 @@ export default class Recorder {
         this.recorder.resume();
     }
 
-    stop(): Promise<{
-        data: Blob,
-        toUrl: () => string 
-    }> {
-        return new Promise(resolve => {
-            this.recorder.addEventListener('dataavailable', function (e) {
-                resolve({
-                    data: e.data,
-                    toUrl: () => {
-                        return URL.createObjectURL(e.data);
-                    }
-                })
-            }, { once: true })
-            this.recorder.stop()
-        })
+    stop() {
+        this.recorder.stop();
     }
 
-    async download(filename: string) {
-        const a = document.createElement('a')
-        a.href = filename
-        a.download = "test"
-        a.click()
-        window.URL.revokeObjectURL(filename)
+    // TODO: Implement a way to save data in a user-defined directory
+    dataHandler(){
+        let chunks: Blob[] = [];
+        this.recorder.addEventListener('dataavailable', async function (e) {
+          chunks.push(e.data);
+          const arrayBuffer = await e.data.arrayBuffer();
+          await writeBinaryFile('audio.webm', arrayBuffer, { dir: BaseDirectory.Desktop, append: true });
+          chunks = [];
+        });
+
+        let interval = setInterval(() => {
+            if(this.recorder.state.match("inactive")) clearInterval(interval);
+            this.recorder.requestData();
+        }, 1000); 
     }
+
 }
-
