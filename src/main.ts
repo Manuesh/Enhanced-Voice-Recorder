@@ -1,6 +1,7 @@
 import Recorder from "./record";
 import Timer from "./timer";
 import Row from "./row";
+import DataHandler from "./datahandler";
 
 
 let recButton = document.querySelector(".recButton")! as HTMLButtonElement;
@@ -15,8 +16,9 @@ async function run() {
     const userMedia = await navigator.mediaDevices.getUserMedia(constraints);
     recButton.disabled = false;
 
+    const dataHandler = new DataHandler();
     const mediaRecorder = new MediaRecorder(userMedia);
-    const recorder = new Recorder(mediaRecorder);    
+    const recorder = new Recorder(mediaRecorder, dataHandler);    
 
     // Recorder handler
     recButton.addEventListener("click", async () => {
@@ -24,6 +26,7 @@ async function run() {
         recorder.start();
         timer.start();
       } else if (mediaRecorder.state.match("recording")) {
+        recorder.stop();
         let row = new Row();
         row.initialize();
         row.generateChild();

@@ -19,7 +19,7 @@ export default class Timer{
     }, 1000);
   }
 
-  updateTimer() {
+  private updateTimer() {
 
     this.seconds++;
 
@@ -41,10 +41,11 @@ export default class Timer{
   stop() {
     console.log("Timer stopped");
     clearInterval(this.timerInterval);
+    console.log(this.timerInterval);
     this.reset();
   }
 
-  reset() {
+  private reset() {
     this.seconds = 0;
     this.minutes = 0;
     this.hours = 0;
