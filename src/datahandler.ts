@@ -1,16 +1,27 @@
-import { writeBinaryFile, BaseDirectory } from "@tauri-apps/api/fs";
+import { BaseDirectory, writeBinaryFile } from "@tauri-apps/api/fs";
+import { open } from "@tauri-apps/api/dialog";
 
 export default class DataHandler{
 
-    startSavingData(recorder: MediaRecorder){
-        this.saveData(recorder);
+    directory: string;
+
+    constructor(){
+        this.directory = "";
+    }
+
+    async chooseDirectory(){
+        this.directory = (await open({directory: true}))?.toString()!;
+    }
+
+    async startSavingData(recorder: MediaRecorder){
+        this.saveData(recorder, this.directory);
     }
 
     // TODO: Implement a way to save data in a user-defined directory
-    private saveData(recorder: MediaRecorder){
+    private async saveData(recorder: MediaRecorder, directory: string){
         const saveData = async function (e: BlobEvent) {
             const arrayBuffer = await e.data.arrayBuffer();
-            await writeBinaryFile('audio.webm', arrayBuffer, { dir: BaseDirectory.Desktop, append: true });
+            await writeBinaryFile(directory+'\\audio.webm', arrayBuffer, { append: true });
         }
 
         recorder.addEventListener("dataavailable", saveData);

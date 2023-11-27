@@ -19,7 +19,8 @@ async function run() {
     const dataHandler = new DataHandler();
     const mediaRecorder = new MediaRecorder(userMedia);
     const recorder = new Recorder(mediaRecorder, dataHandler);    
-
+    dataHandler.chooseDirectory();
+    
     // Recorder handler
     recButton.addEventListener("click", async () => {
       if (mediaRecorder.state.match("inactive")) {

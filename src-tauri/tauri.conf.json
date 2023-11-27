@@ -27,8 +27,16 @@
         "removeDir": true,
         "removeFile": true,
         "renameFile": true,
-        "scope": ["$DESKTOP/**"],
+        "scope": ["*"],
         "writeFile": true
+      },
+      "dialog": {
+        "all": true,
+        "ask": true,
+        "confirm": true,
+        "message": true,
+        "open": true,
+        "save": true
       }
     },
     "bundle": {
