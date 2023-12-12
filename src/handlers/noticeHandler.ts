@@ -124,18 +124,19 @@ export default class NoticeHandler{
 
     static checkIfSaveFolderIsSet(): Promise<{
         getPath: () => string,
-        isAdded: boolean
+        isFolderAdded: boolean
     }> {
+        localStorage.removeItem("saveFolder");
         return new Promise((resolve) => {
             if(localStorage.getItem("saveFolder") === null){
                 resolve({
                     getPath: () => "",
-                    isAdded: false
+                    isFolderAdded: false
                 })
                 return new InnerNoticeHandler();
             } else resolve({
                 getPath: () => localStorage.getItem("saveFolder")!,
-                isAdded: true
+                isFolderAdded: true
             });
         });
     }
