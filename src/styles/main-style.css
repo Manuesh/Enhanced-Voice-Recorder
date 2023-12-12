@@ -29,13 +29,10 @@ button{
   font: inherit;
   cursor: pointer;
   outline: inherit;
-}
-
-.recButton{
   transition: all 0.3s;
 }
 
-.recButton:hover{
+button:hover{
   transform: scale(0.9);
 }
 
@@ -68,25 +65,7 @@ button{
   font-size: 20px;
 }
 
-
 .commands-row{
   display: flex;
   gap: 5px;
-}
-
-.play{
-  transition: all 0.2s;
-}
-
-.play:hover{
-  transform: scale(0.9);
-}
-
-
-.stop{
-  transition: all 0.2s;
-}
-
-.stop:hover{
-  transform: scale(0.9);
 }

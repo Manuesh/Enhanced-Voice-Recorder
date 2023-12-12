@@ -1,27 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/img/icon.svg" />
-    <title>Voice Recorder</title>
-  </head>
-  <body>
-    <div class="app">
-        <div class="registrazione">
-            <div class="testo-rec-outer">
-              <label class="testo-rec-inner" for="testo">Start a new recording</label>
-            </div>
-            <div class="image-rec-outer">
-              <button class="recButton" id="recButton" type="button" disabled>
-                <img class="image-rec-inner" src="./src/img/record.svg"/>
-              </button>
-            </div>
-            <div>
-              <label class="timer" id="timer" for="timer">00:00:00</label>
-            </div>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./src/resources/img/icon.svg" />
+  <title>Voice Recorder</title>
+</head>
+
+<body>
+  <div class="app">
+    <div class="registrazione">
+      <div class="testo-rec-outer">
+        <label class="testo-rec-inner" for="testo">Start a new recording</label>
+      </div>
+      <div class="image-rec-outer">
+        <button class="recButton" id="recButton" type="button" disabled>
+          <img class="image-rec-inner" src="./src/resources/img/record.svg" />
+        </button>
+      </div>
+      <div>
+        <label class="timer" id="timer" for="timer">00:00:00</label>
+      </div>
     </div>
-    <link rel="stylesheet" href="/src/style.css">
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+  <link rel="stylesheet" href="/src/styles/main-style.css">
+</body>
 </html>

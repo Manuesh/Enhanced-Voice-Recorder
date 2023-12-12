@@ -1,4 +1,4 @@
-class playButton {
+class PlayButton {
   playButtonImg: HTMLImageElement;
   playButtonElement: HTMLButtonElement;
 
@@ -8,16 +8,16 @@ class playButton {
   }
 
   initialize() {
-    this.playButtonImg.src = "src/img/play.svg";
+    this.playButtonImg.src = "src/resources/img/play.svg";
     this.playButtonElement.append(this.playButtonImg);
   }
 
-  async play(data: Blob) {
+  async play(/*data: Blob*/) {
     // If the user presses the "play button" the audio will play
   }
 }
 
-class pauseButton {
+class PauseButton {
   pauseButtonImg: HTMLImageElement;
   pauseButtonElement: HTMLButtonElement;
 
@@ -27,16 +27,16 @@ class pauseButton {
   }
 
   initialize() {
-    this.pauseButtonImg.src = "src/img/pause.svg";
+    this.pauseButtonImg.src = "src/resources/img/pause.svg";
     this.pauseButtonElement.append(this.pauseButtonImg);
   }
 
-  async pause(data: Blob) {
+  async pause(/*data: Blob*/) {
     // If the user presses the "pause button" the audio will pause
   }
 }
 
-class stopButton {
+class StopButton {
   stopButtonImg: HTMLImageElement;
   stopButtonElement: HTMLButtonElement;
 
@@ -46,24 +46,24 @@ class stopButton {
   }
 
   initialize() {
-    this.stopButtonImg.src = "src/img/stop.svg";
+    this.stopButtonImg.src = "src/resources/img/stop.svg";
     this.stopButtonElement.append(this.stopButtonImg);
   }
 
-  async stop(data: Blob) {
+  async stop(/*data: Blob*/) {
     // If the user presses the "stop button" the audio will stop
   }
 }
 
 export default class Row {
-  playButton: playButton;
-  pauseButton: pauseButton;
-  stopButton: stopButton;
+  playButton: PlayButton;
+  pauseButton: PauseButton;
+  stopButton: StopButton;
 
   constructor() {
-    this.playButton = new playButton();
-    this.pauseButton = new pauseButton();
-    this.stopButton = new stopButton();
+    this.playButton = new PlayButton();
+    this.pauseButton = new PauseButton();
+    this.stopButton = new StopButton();
   }
 
   initialize() {
@@ -72,7 +72,7 @@ export default class Row {
     this.stopButton.initialize();
   }
 
-  async generateChild() {
+  generateChild() {
     let row = document.createElement("div");
     row.classList.add("row");
     document.body.appendChild(row);
@@ -96,10 +96,7 @@ export default class Row {
 
     inner_left_row.appendChild(text_row);
     text_row.appendChild(text);
-
-    text.textContent = "Test";
-    text.style.fontWeight = "bold";
-    text.style.marginTop = "0.9rem"; 
+    
     return inner_left_row;
   }
 

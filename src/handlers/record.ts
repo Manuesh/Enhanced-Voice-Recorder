@@ -1,18 +1,17 @@
-import DataHandler from "./datahandler";
+import getDataHandlerInstance from "../handlers/dataHandler"
+const dataHandler = getDataHandlerInstance();
 
 export default class Recorder {
 
     recorder: MediaRecorder;
-    dataHandler: DataHandler;
 
-    constructor(mediaRecorder: MediaRecorder, dataHandler: DataHandler) {
+    constructor(mediaRecorder: MediaRecorder) {
         this.recorder = mediaRecorder;
-        this.dataHandler = dataHandler;
     }
 
     start() {
         this.recorder.start();
-        this.dataHandler.startSavingData(this.recorder);
+        dataHandler.startSavingData(this.recorder);
     }
 
     pause() {
