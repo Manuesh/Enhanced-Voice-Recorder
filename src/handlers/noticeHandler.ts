@@ -126,7 +126,6 @@ export default class NoticeHandler{
         getPath: () => string,
         isFolderAdded: boolean
     }> {
-        localStorage.removeItem("saveFolder");
         return new Promise((resolve) => {
             if(localStorage.getItem("saveFolder") === null){
                 resolve({
