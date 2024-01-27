@@ -1,4 +1,4 @@
-import getDataHandlerInstance from "./dataHandler";
+import { dataHandler } from "./dataHandler";
 
 class InnerNoticeHandler{
 
@@ -103,7 +103,7 @@ class InnerNoticeHandler{
     }
 
     async selectSaveFolder() {
-        localStorage.setItem("saveFolder", await getDataHandlerInstance().chooseDirectory());
+        localStorage.setItem("saveFolder", await dataHandler.chooseDirectory());
         return localStorage.getItem("saveFolder");
     }
 

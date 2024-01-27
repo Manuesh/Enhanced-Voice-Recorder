@@ -1,5 +1,4 @@
-import getDataHandlerInstance from "../handlers/dataHandler"
-const dataHandler = getDataHandlerInstance();
+import { dataHandler } from "./dataHandler";
 
 export default class Recorder {
 

@@ -1,4 +1,4 @@
-import { writeBinaryFile } from "@tauri-apps/plugin-fs";
+import { writeFile } from "@tauri-apps/plugin-fs";
 import { open } from "@tauri-apps/plugin-dialog";
 
 class DataHandler{
@@ -18,11 +18,13 @@ class DataHandler{
         this.saveData(recorder);
     }
 
+    // Consider sending data to Rust and serialize it there
     private async saveData(recorder: MediaRecorder){
         const saveData = async function (e: BlobEvent) {
             const arrayBuffer = await e.data.arrayBuffer();
             const path = localStorage.getItem("saveFolder");
-            await writeBinaryFile(path+'\\audio.webm', arrayBuffer, /*{ append: true }*/);
+            const uint8Array = new Uint8Array(arrayBuffer);
+            await writeFile(path+'\\audio.webm', uint8Array, { append: true, create: true });
         }
         
         recorder.addEventListener("dataavailable", saveData);
@@ -40,8 +42,4 @@ class DataHandler{
 
 }
 
-const dataHandler: DataHandler = new DataHandler();
-
-export default function getDataHandlerInstance() {
-    return dataHandler;
-}
+export const dataHandler: DataHandler = new DataHandler();
