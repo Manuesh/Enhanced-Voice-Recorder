@@ -24,7 +24,7 @@ class DataHandler{
             const arrayBuffer = await e.data.arrayBuffer();
             const path = localStorage.getItem("saveFolder");
             const uint8Array = new Uint8Array(arrayBuffer);
-            await writeFile(path+'\\audio.webm', uint8Array, { append: true, create: true });
+            await writeFile(path!, uint8Array, { append: true });
         }
         
         recorder.addEventListener("dataavailable", saveData);

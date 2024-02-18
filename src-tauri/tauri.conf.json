@@ -1,15 +1,33 @@
 {
+  "app": {
+    "security": {
+      "csp": "null"
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "height": 600,
+        "resizable": true,
+        "title": "Enhanced Voice Recorder",
+        "width": 800
+      }
+    ],
+    "withGlobalTauri": true
+  },
   "build": {
     "beforeBuildCommand": "npm run build",
     "beforeDevCommand": "npm run dev",
-    "devPath": "http://localhost:1420",
-    "distDir": "../dist",
-    "withGlobalTauri": true
+    "devUrl": "http://localhost:1420",
+    "frontendDist": "../dist"
   },
-  "package": {
-    "productName": "enhanced-voice-recorder",
-    "version": "0.0.0"
+  "bundle": {
+    "active": true,
+    "icon": [
+      "icons/icon.png"
+    ],
+    "targets": "all"
   },
+  "identifier": "com.serverbooster",
   "plugins": {
     "fs": {
       "scope": [
@@ -20,26 +38,6 @@
       "open": true
     }
   },
-  "tauri": {
-    "bundle": {
-      "active": true,
-      "icon": [
-        "icons/icon.png"
-      ],
-      "identifier": "com.serverbooster",
-      "targets": "all"
-    },
-    "security": {
-      "csp": null
-    },
-    "windows": [
-      {
-        "fullscreen": false,
-        "height": 600,
-        "resizable": true,
-        "title": "Enhanced Voice Recorder",
-        "width": 800
-      }
-    ]
-  }
+  "productName": "enhanced-voice-recorder",
+  "version": "0.0.0"
 }
